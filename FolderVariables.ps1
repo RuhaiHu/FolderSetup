@@ -42,10 +42,10 @@ $userLocal = $env:LOCALAPPDATA + "\"
 $userRoaming = $env:APPDATA + "\"
 
 # Local Directories
-$localDirectories = "FileZilla Pro", "KeePass", "keepassxc", "Minion", "Mozilla", "Thunderbird"
+$localDirectories = "FileZilla Pro", "KeePass", "keepassxc", "Minion", "Thunderbird"
 
 # Roaming Directories
-$roamingDirectories = ".minecraft", "Code", "Elgato", "FileZilla", "foobar2000", "GitHub Desktop", "Guild Wars 2", "HexChat", "JumplistExtender", "MediaMonkey", "Mozilla", "Notepad++", "obs-studio", "steelseries-engine-3-client", "Thunderbird"
+$roamingDirectories = ".minecraft", "Code", "Elgato", "FileZilla", "foobar2000", "GitHub Desktop", "Guild Wars 2", "HexChat", "JumplistExtender", "MediaMonkey", "Notepad++", "obs-studio", "steelseries-engine-3-client", "Thunderbird"
 
 # New location to move folder too
 $notOSDrivePathLocal = "E:\Users\" + $user + "\AppData\Local\"
