@@ -44,11 +44,18 @@ $ErrorActionPreference = "SilentlyContinue"
 
 Write-Host "Checking for the following %AppData% directories"
 Write-Host "Current user: $env:USERNAME"
+
+Write-Host " "
+
 Write-Host "Local Directories: (Path: $userLocal) "
 Write-Host $localDirectories
+
 Write-Host " "
+
 Write-Host "Roaming Directories: (Path: $userRoaming) "
 Write-Host $roamingDirectories
+
+Write-Host " "
 Write-Host " "
 
 Write-Host "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
@@ -69,12 +76,13 @@ foreach ($folder in $localDirectories) {
         Write-Host "The Folder '$directory' exists!"
         Write-Host "Checking for folder in new location..."
 
-        if (Test-Path $newDirecotry) {
+        if (Test-Path $newDirectory) {
             Write-Host "The Folder '$newDirectory' exists!"
             Write-Host "Manually move folder!"
             Write-Host "Not Moving folder because it exist in the appdata directory."
 
-        } else {
+        }else{
+            Write-Host "The Folder '$newDirectory' does not exist in new location!"
             Write-Host "Moving folder( '$directory' ) to new location..."
             
             # Create the folder Junction from $directory to $newDirecotry
@@ -96,12 +104,13 @@ foreach ($folder in $roamingDirectories) {
         Write-Host "The Folder '$directory' exists!"
         Write-Host "Checking for folder in new location..."
 
-        if (Test-Path $newDirecotry) {
+        if (Test-Path $newDirectory) {
             Write-Host "The Folder '$newDirectory' exists!"
             Write-Host "Manually move folder!"
             Write-Host "Not Moving folder because it exist in the appdata directory."
 
-        } else {
+        }else{
+            Write-Host "The Folder '$newDirectory' does not exist in new location!"
             Write-Host "Moving folder( '$directory' ) to new location..."
             
             # Create the folder Junction from $directory to $newDirecotry
