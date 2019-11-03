@@ -44,16 +44,13 @@ Write-Host "Checking for the following %AppData% directories"
 Write-Host "Current user: $env:USERNAME"
 Write-Host "Local Directories: (Path: $userLocal) "
 Write-Host $localDirectories
-Write-Host " "
+Write-Host "'n"
 Write-Host "Roaming Directories: (Path: $userRoaming) "
 Write-Host $roamingDirectories
-Write-Host " "
+Write-Host "'n"
 
-
-Write-Host "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
-Write-Warning "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
-Write-Warning "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
-Write-Warning "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
+Write-Warning "DO NOT HAVE ANY OF THE ABOVE PROGRAMS RUNNING IN BACKGROUND!!!"
+Write-Warning "DO NOT HAVE ANY OF THE ABOVE PROGRAMS RUNNING IN BACKGROUND!!!"
 
 
 # Check to see if Local directories exist
@@ -65,16 +62,27 @@ foreach ($folder in $localDirectories) {
     # Combining new directory
     $newDirectory = $notOSDrivePathLocal + $folder
 
-    if (Test-Path $directory) {
-        Write-Host "The Folder '$folder' exists!"
-        Write-Host "Move Folder before Linking!!"
-        Write-Host "Not Linking folder because it exist in the appdata directory."
-    }else{
-        Write-Host "The folder '$folder' does Not exist!"
-        Write-Host "Proceeding to Link!"
-        
-        # Create the folder Junction from $directory to $newDirecotry
-        New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+    if (Test-Path $newDirectory) {
+        Write-Host " "
+        Write-Host "The Folder '$newDirectory' for the link exists!"
+        Write-Host "Checking for folder in linking location..."
+        Write-Host " "
+
+        if (Test-Path $directory) {
+            Write-Host "The Folder '$folder' exists!"
+            Write-Warning "Move Folder before Linking!!"
+            Write-Warning "Not Linking folder because it exist in the appdata directory."
+            Write-Host " "
+        }else{
+            Write-Host "The folder '$folder' does Not exist!"
+            Write-Host "Proceeding to Link!"
+            Write-Host " "
+            
+            # Create the folder Junction from $directory to $newDirecotry
+            New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+        }
+    } else {
+        Write-Warning "No directory to link to please move files before trying again."
     }
 }
 
@@ -87,15 +95,24 @@ foreach ($folder in $roamingDirectories) {
     # Combining new directory
     $newDirectory = $notOSDrivePathRoaming + $folder
 
-    if (Test-Path $directory) {
-        Write-Host "The Folder '$folder' exists!"
-        Write-Host "Move Folder before Linking!!"
-        Write-Host "Not Linking folder because it exist in the appdata directory."
-    }else{
-        Write-Host "The folder '$folder' does Not exist!"
-        Write-Host "Proceeding to Link!"
-        
-        # Create the folder Junction from $directory to $newDirecotry
-        New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+    if (Test-Path $newDirectory) {
+        Write-Host " "
+        Write-Host "The Folder '$newDirectory' for the link exists!"
+        Write-Host "Checking for folder in linking location..."
+        Write-Host " "
+
+        if (Test-Path $directory) {
+            Write-Host "The Folder '$folder' exists!"
+            Write-Host "Move Folder before Linking!!"
+            Write-Host "Not Linking folder because it exist in the appdata directory."
+        }else{
+            Write-Host "The folder '$folder' does Not exist!"
+            Write-Host "Proceeding to Link!"
+            
+            # Create the folder Junction from $directory to $newDirecotry
+            New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+        }
+    } else {
+        Write-Warning "No directory to link to please move files before trying again."
     }
 }

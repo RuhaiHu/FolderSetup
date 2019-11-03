@@ -58,10 +58,10 @@ Write-Host $roamingDirectories
 Write-Host " "
 Write-Host " "
 
-Write-Host "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
-Write-Warning "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
-Write-Warning "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
-Write-Warning "DO NOT HAVE ANY PROGRAMS RUNNING IN BACKGROUND!!!"
+Write-Warning "DO NOT HAVE ANY OF THE ABOVE PROGRAMS RUNNING IN BACKGROUND!!!"
+Write-Warning "DO NOT HAVE ANY OF THE ABOVE PROGRAMS RUNNING IN BACKGROUND!!!"
+
+Write-Host " "
 
 # Check to see if Local directories exist
 foreach ($folder in $localDirectories) {
@@ -73,21 +73,29 @@ foreach ($folder in $localDirectories) {
     $newDirectory = $notOSDrivePathLocal + $folder
 
     if (Test-Path $directory) {
+        Write-Host " "
         Write-Host "The Folder '$directory' exists!"
         Write-Host "Checking for folder in new location..."
+        Write-Host " "
 
         if (Test-Path $newDirectory) {
             Write-Host "The Folder '$newDirectory' exists!"
-            Write-Host "Manually move folder!"
-            Write-Host "Not Moving folder because it exist in the appdata directory."
+            Write-Warning "Manually move folder!"
+            Write-Warning "Not Moving folder because it exist in the appdata directory."
+            Write-Host " "
 
-        }else{
+        } else {
             Write-Host "The Folder '$newDirectory' does not exist in new location!"
             Write-Host "Moving folder( '$directory' ) to new location..."
+            Write-Host " "
             
             # Create the folder Junction from $directory to $newDirecotry
             Move-Item -Path $directory -Destination $newDirectory -WhatIf
         }
+    } else {
+        Write-Host " "
+        Write-Host "The Folder '$directory' does not exist"
+        Write-Host " "
     }
 }
 
@@ -95,26 +103,34 @@ foreach ($folder in $localDirectories) {
 foreach ($folder in $roamingDirectories) {
 
     # Combining current directory
-    $directory = $userLocal + $folder
+    $directory = $userRoaming + $folder
 
     # Combining new directory
     $newDirectory = $notOSDrivePathRoaming + $folder
 
     if (Test-Path $directory) {
+        Write-Host " "
         Write-Host "The Folder '$directory' exists!"
         Write-Host "Checking for folder in new location..."
+        Write-Host " "
 
         if (Test-Path $newDirectory) {
             Write-Host "The Folder '$newDirectory' exists!"
-            Write-Host "Manually move folder!"
-            Write-Host "Not Moving folder because it exist in the appdata directory."
+            Write-Warning "Manually move folder!"
+            Write-Warning "Not Moving folder because it exist in the appdata directory."
+            Write-Host " "
 
-        }else{
+        } else {
             Write-Host "The Folder '$newDirectory' does not exist in new location!"
             Write-Host "Moving folder( '$directory' ) to new location..."
+            Write-Host " "
             
             # Create the folder Junction from $directory to $newDirecotry
             Move-Item -Path $directory -Destination $newDirectory -WhatIf
         }
+    } else {
+        Write-Host " "
+        Write-Host "The Folder '$directory' does not exist"
+        Write-Host " "
     }
 }
