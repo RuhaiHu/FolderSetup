@@ -78,8 +78,13 @@ foreach ($folder in $localDirectories) {
             Write-Host "Proceeding to Link!"
             Write-Host " "
             
-            # Create the folder Junction from $directory to $newDirecotry
-            New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+            if ($testMode) {
+                # Create the folder Junction from $directory to $newDirecotry
+                New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+            } else {
+                # Create the folder Junction from $directory to $newDirecotry
+                New-Item -ItemType Junction -Path $directory -Target $newDirectory
+            }
         }
     } else {
         Write-Warning "No directory to link to please move files before trying again."
@@ -109,8 +114,13 @@ foreach ($folder in $roamingDirectories) {
             Write-Host "The folder '$folder' does Not exist!"
             Write-Host "Proceeding to Link!"
             
-            # Create the folder Junction from $directory to $newDirecotry
-            New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+            if ($testMode) {
+                # Create the folder Junction from $directory to $newDirecotry
+                New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
+            } else {
+                # Create the folder Junction from $directory to $newDirecotry
+                New-Item -ItemType Junction -Path $directory -Target $newDirectory
+            }
         }
     } else {
         Write-Warning "No directory to link to please move files before trying again."
