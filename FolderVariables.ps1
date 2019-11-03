@@ -1,10 +1,14 @@
 #requires -version 5.1
 <#
 .SYNOPSIS
-    Create links to the various config folders in the current users appdata folders
+    Create the variables for FolderLink.ps1 and FolderRelocate.ps1
 
 .DESCRIPTION
-    Checks to see if the Directories in the variables exist if not makes the link needed
+    Checks to see if the Directories in the variables exist
+    If it exists in both locations 
+        skips Folder if it does
+        Because i dont want to over write something
+    If it does not exist in the new location
 
 .PARAMETER <Parameter_Name>
     <Brief description of parameter input required. Repeat this attribute if required>
@@ -45,11 +49,10 @@ $userRoaming = $env:APPDATA + "\"
 
 # Local Directories
 $localDirectories = "FileZilla Pro", "KeePass", "keepassxc", "Minion", "Mozilla", "Thunderbird"
-$localDirectoriesCount = $localDirectories.Count
 
 # Roaming Directories
 $roamingDirectories = ".minecraft", "Elgato", "FileZila", "foobar2000", "Guild Wars 2", "HexChat", "JumplistExtender", "MediaMonkey", "Mozilla", "Notepad++", "obs-studio", "steelseries-engine-3-client", "Thunderbird"
-$roamingDirectoriesCount = $roamingDirectories.Count
 
 # New location to move folder too
-$notOSDrivePath = "E:\Users\" + $user + "\AppData\"
+$notOSDrivePathLocal = "E:\Users\" + $user + "\AppData\Local\"
+$notOSDrivePathRoaming = "E:\Users\" + $user + "\AppData\Roaming\"
