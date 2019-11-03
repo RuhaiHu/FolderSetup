@@ -78,7 +78,7 @@ foreach ($folder in $localDirectories) {
             Write-Host "Proceeding to Link!"
             Write-Host " "
             
-            if ($testMode) {
+            if ($testModeLink) {
                 # Create the folder Junction from $directory to $newDirecotry
                 New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
             } else {
@@ -114,7 +114,7 @@ foreach ($folder in $roamingDirectories) {
             Write-Host "The folder '$folder' does Not exist!"
             Write-Host "Proceeding to Link!"
             
-            if ($testMode) {
+            if ($testModeLink) {
                 # Create the folder Junction from $directory to $newDirecotry
                 New-Item -ItemType Junction -Path $directory -Target $newDirectory -WhatIf
             } else {

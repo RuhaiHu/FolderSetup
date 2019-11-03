@@ -89,7 +89,7 @@ foreach ($folder in $localDirectories) {
             Write-Host "Moving folder( '$directory' ) to new location..."
             Write-Host " "
             
-            if ($testMode) {
+            if ($testModeRelocate) {
                 # Create the folder Junction from $directory to $newDirecotry
                 Move-Item -Path $directory -Destination $newDirectory -WhatIf
             } else {
@@ -130,7 +130,7 @@ foreach ($folder in $roamingDirectories) {
             Write-Host "Moving folder( '$directory' ) to new location..."
             Write-Host " "
             
-            if ($testMode) {
+            if ($testModeRelocate) {
                 # Create the folder Junction from $directory to $newDirecotry
                 Move-Item -Path $directory -Destination $newDirectory -WhatIf
             } else {

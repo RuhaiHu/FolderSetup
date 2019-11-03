@@ -45,7 +45,7 @@ $userRoaming = $env:APPDATA + "\"
 $localDirectories = "FileZilla Pro", "KeePass", "keepassxc", "Minion", "Mozilla", "Thunderbird"
 
 # Roaming Directories
-$roamingDirectories = ".minecraft", "Elgato", "FileZila", "foobar2000", "Guild Wars 2", "HexChat", "JumplistExtender", "MediaMonkey", "Mozilla", "Notepad++", "obs-studio", "steelseries-engine-3-client", "Thunderbird"
+$roamingDirectories = ".minecraft", "Code", "Elgato", "FileZila", "foobar2000", "Guild Wars 2", "HexChat", "JumplistExtender", "MediaMonkey", "Mozilla", "Notepad++", "obs-studio", "steelseries-engine-3-client", "Thunderbird"
 
 # New location to move folder too
 $notOSDrivePathLocal = "E:\Users\" + $user + "\AppData\Local\"
@@ -53,4 +53,5 @@ $notOSDrivePathRoaming = "E:\Users\" + $user + "\AppData\Roaming\"
 
 # Set this variable to True to enable test mode
 # Set this variable to False to disable test mode
-$testMode = $true
+$testModeRelocate = $false
+$testModeLink = $true
