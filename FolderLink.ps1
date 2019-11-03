@@ -1,4 +1,5 @@
-#requires -version 5.1
+#Requires -version 5.1
+#Requires -RunAsAdministrator
 <#
 .SYNOPSIS
     Create links to the various config folders in the current users appdata folders

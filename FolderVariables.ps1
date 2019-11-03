@@ -1,22 +1,19 @@
-#requires -version 5.1
+#Requires -version 5.1
 <#
 .SYNOPSIS
     Create the variables for FolderLink.ps1 and FolderRelocate.ps1
 
 .DESCRIPTION
-    Checks to see if the Directories in the variables exist
-    If it exists in both locations 
-        skips Folder if it does
-        Because i dont want to over write something
-    If it does not exist in the new location
+    Just the Shared variables of the Folder Link and Relocate scripts
 
 .PARAMETER <Parameter_Name>
     <Brief description of parameter input required. Repeat this attribute if required>
 
 .INPUTS
     The Variables below
+
 .OUTPUTS
-    Output to console
+    None
 
 .NOTES
     Version:        1.0
@@ -35,9 +32,6 @@
 
 #Set Error Action to Silently Continue
 $ErrorActionPreference = "SilentlyContinue"
-
-#Dot Source required Function Libraries
-# . "C:\Scripts\Functions\Logging_Functions.ps1"
 
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 

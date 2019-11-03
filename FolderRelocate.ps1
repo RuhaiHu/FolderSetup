@@ -1,4 +1,5 @@
-#requires -version 5.1
+#Requires -version 5.1
+#Requires -RunAsAdministrator
 <#
 .SYNOPSIS
     Moves the folders for linking if below
