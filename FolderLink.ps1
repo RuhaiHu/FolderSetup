@@ -123,6 +123,7 @@ foreach ($folder in $roamingDirectories) {
             }
         }
     } else {
+		Write-Host " "
         Write-Warning "No directory to link to please move files before trying again."
     }
 }
