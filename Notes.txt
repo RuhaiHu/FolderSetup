@@ -1,0 +1,4 @@
+The intent of the scripts in this folder.
+
+To relocate folders from within the"Current User"'s %appdata% sub folders Local, LocalLow, and Roaming.
+To a different location for better backup/syncing of the folders and settings within.
